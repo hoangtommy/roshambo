@@ -1,8 +1,7 @@
 <script>
-	// generate a random number from 1 to 3. assign each number rock, paper, or scissor
-
-	function computerPlay() {
-		let number = Math.round(Math.random()*3 + 1);
+	// Computer's hand:
+	function computerHand() {
+		let number = Math.round(Math.random()*2 + 1);
 		switch (number) {
 			case 1:
 				return "rock";
@@ -12,23 +11,24 @@
 				return "scissor";
 		}
 	}
-	let computerMove = computerPlay();
-
-	function playerPlay() {
+	
+	// User's hand:
+	function playerHand() {
 		let response = prompt("enter rock, paper, or scissor");
 		response = response.toLowerCase();
 		return response;
 	}
-	let playerMove = playerPlay();
 
 	// rock beats scissor, rock loses to paper, rock ties rock
 	// paper beats rock, paper loses to scissor, paper ties paper
 	// scissor beats paper, scissor loses to rock, scissor ties scissor
 
-	function playGame(playerSelection, computerSelection) { //"rock", "papper"
-		let tieMessage = `Tie Time! You both chose ${playerSelection}`;
-		let winMessage = `You win! Your ${playerSelection} beats ${computerSelection}`;
-		let loseMessage = `You lose! Your ${playerSelection} loses to ${computerSelection}`
+	// Simulates one game between user and computer
+	function playGame(playerSelection, computerSelection) { 
+
+		let tieMessage = `Tie Time!`;
+		let winMessage = `You win!`;
+		let loseMessage = `You lose!`
 
 		if (playerSelection == computerSelection) {
 			return tieMessage;
@@ -59,17 +59,73 @@
 		 }
 	}
 
-	console.log(playGame(playerMove, computerMove));
+	// Keeps track of scores
+	function playRound(result) {
+		
+		if (result == `You win!`) {
+			return 1;
+		} else if (result == `You lose!`) {
+			return -1;
+		} 
+	}
 
-	// function game() { 
-	// 	let playerScore = 0; //
-	// 	let computerScore = 0; //
-	// 	let score = `you: ${playerScore} computer: ${computerScore}`; 
+	// Simulate five consecutive games, recording each result and showing a winner at the end.
+	function game() { 
+		let playerScore = 0; //
+		let computerScore = 0; //
 
-	// 	// run the game 
-	// }
+		let round1 = playGame(playerHand(), computerHand());
+		if (round1 == `You win!`) {
+			playerScore++;
+		} else if (round1 == `You lose!`) {
+			computerScore++;
+		}
+		console.log(round1);
 
-	// game();
+		let round2 = playGame(playerHand(), computerHand());
+		if (round2 == `You win!`) {
+			playerScore++;
+		} else if (round2 == `You lose!`) {
+			computerScore++;
+		}
+		console.log(round2);
+
+		let round3 = playGame(playerHand(), computerHand());
+		if (round3 == `You win!`) {
+			playerScore++;
+		} else if (round3 == `You lose!`) {
+			computerScore++;
+		}
+		console.log(round3);	
+
+		let round4 = playGame(playerHand(), computerHand());
+		if (round4 == `You win!`) {
+			playerScore++;
+		} else if (round4 == `You lose!`) {
+			computerScore++;
+		}
+		console.log(round4);	
+
+		let round5 = playGame(playerHand(), computerHand());
+		if (round5 == `You win!`) {
+			playerScore++;
+		} else if (round5 == `You lose!`) {
+			computerScore++;
+		}
+		console.log(round5);
+
+		let score = "you: " + playerScore + " computer: " + computerScore;
+		console.log(score);
+		if (playerScore > computerScore) {
+			console.log("you won the game!");
+		} else if (playerScore < computerScore) {
+			console.log("you lost to the machine");
+		} else {
+			console.log("It was a tie!");
+		}
+	}
+
+	game();
 
 
 </script>
