@@ -12,21 +12,29 @@
 				return "scissor";
 		}
 	}
+	let computerMove = computerPlay();
+
+	function playerPlay() {
+		let response = prompt("enter rock, paper, or scissor");
+		response = response.toLowerCase();
+		return response;
+	}
+	let playerMove = playerPlay();
 
 	// rock beats scissor, rock loses to paper, rock ties rock
 	// paper beats rock, paper loses to scissor, paper ties paper
 	// scissor beats paper, scissor loses to rock, scissor ties scissor
-	function playGame(playerSelection, computerSelection) { //"rock", "papper"
-		let playerChoice = playerSelection.toLowerCase(); 
-		let tieMessage = `Tie Time! You both chose ${playerChoice}`;
-		let winMessage = `You win! Your ${playerChoice} beats ${computerSelection}`;
-		let loseMessage = `You lose! Your ${playerChoice} loses to ${computerSelection}`
 
-		if (playerChoice == computerSelection) {
+	function playGame(playerSelection, computerSelection) { //"rock", "papper"
+		let tieMessage = `Tie Time! You both chose ${playerSelection}`;
+		let winMessage = `You win! Your ${playerSelection} beats ${computerSelection}`;
+		let loseMessage = `You lose! Your ${playerSelection} loses to ${computerSelection}`
+
+		if (playerSelection == computerSelection) {
 			return tieMessage;
 		}
 
-		if (playerChoice == "rock") {
+		if (playerSelection == "rock") {
 			if (computerSelection == "scissor") {
 				return winMessage;
 			} else {
@@ -34,7 +42,7 @@
 			} 
 		} 
 
-		if (playerChoice == "paper") {
+		if (playerSelection == "paper") {
 			if (computerSelection == "rock") {
 				return winMessage;
 			} else {
@@ -42,7 +50,7 @@
 			}
 		 }
 
-		 if (playerChoice == "scissor") {
+		 if (playerSelection == "scissor") {
 		 	if (computerSelection == "paper") {
 		 		return winMessage;
 		 	} else {
@@ -51,15 +59,17 @@
 		 }
 	}
 
-	
-	function getPlayerSelection() {
-		let response = prompt("enter rock, paper, or scissor");
-		return response;
-	}
+	console.log(playGame(playerMove, computerMove));
 
-	console.log(playGame(getPlayerSelection(), computerPlay()));
+	// function game() { 
+	// 	let playerScore = 0; //
+	// 	let computerScore = 0; //
+	// 	let score = `you: ${playerScore} computer: ${computerScore}`; 
 
-	// function game() {
-	// 	playGame()
+	// 	// run the game 
 	// }
+
+	// game();
+
+
 </script>
