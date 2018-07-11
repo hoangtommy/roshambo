@@ -32,9 +32,10 @@ function displayMessage(message) {
 	results.appendChild(resultsContent);
 }
 
-	let scoreboard = document.querySelector('#scoreboard');
-	let score = document.createElement('p');
-	scoreboard.appendChild(score);
+let scoreboard = document.querySelector('#scoreboard');
+let score = document.createElement('p');
+scoreboard.appendChild(score);
+
 function displayScore(result) {
 	switch (result) {
 		case winMessage:
@@ -53,7 +54,6 @@ function displayScore(result) {
 
 // Simulates one game between user and computer
 function playGame(e) { 
-
 	let playerSelection = e.target.id;
 	let computerSelection = computerHand();
 
@@ -78,9 +78,11 @@ function playGame(e) {
 	if (playerSelection == "paper") {
 		if (computerSelection == "rock") {
 			displayMessage(winMessage);
+			displayScore(winMessage);
 			return;
 		} else {
 			displayMessage(loseMessage);
+			displayScore(loseMessage);
 			return;
 		}
 	 }
@@ -88,8 +90,10 @@ function playGame(e) {
 	 if (playerSelection == "scissor") {
 	 	if (computerSelection == "paper") {
 	 		displayMessage(winMessage);
+	 		displayScore(winMessage);
 	 	} else {
 	 		displayMessage(loseMessage);
+	 		displayScore(loseMessage);
 	 	}
 	 }
 }
@@ -102,63 +106,3 @@ function playRound(result) {
 		return -1;
 	} 
 }
-
-	// Simulate five consecutive games, recording each result and showing a winner at the end.
-	// function playSeries() { 
-	// 	let playerScore = 0; //
-	// 	let computerScore = 0; //
-
-	// 	let round1 = playGame(playerHand(), computerHand());
-	// 	if (round1 == `You win!`) {
-	// 		playerScore += 1;
-	// 	} else if (round1 == `You lose!`) {
-	// 		computerScore += 1;
-	// 	}
-	// 	console.log(round1);
-
-	// 	let round2 = playGame(playerHand(), computerHand());
-	// 	if (round2 == `You win!`) {
-	// 		playerScore += 1;
-	// 	} else if (round2 == `You lose!`) {
-	// 		computerScore += 1;
-	// 	}
-	// 	console.log(round2);
-
-	// 	let round3 = playGame(playerHand(), computerHand());
-	// 	if (round3 == `You win!`) {
-	// 		playerScore += 1;
-	// 	} else if (round3 == `You lose!`) {
-	// 		computerScore += 1;
-	// 	}
-	// 	console.log(round3);	
-
-	// 	let round4 = playGame(playerHand(), computerHand());
-	// 	if (round4 == `You win!`) {
-	// 		playerScore += 1;
-	// 	} else if (round4 == `You lose!`) {
-	// 		computerScore += 1;
-	// 	}
-	// 	console.log(round4);	
-
-	// 	let round5 = playGame(playerHand(), computerHand());
-	// 	if (round5 == `You win!`) {
-	// 		playerScore++;
-	// 	} else if (round5 == `You lose!`) {
-	// 		computerScore++;
-	// 	}
-	// 	console.log(round5);
-
-	// 	let score = "you: " + playerScore + " computer: " + computerScore;
-	// 	console.log(score);
-	// 	if (playerScore > computerScore) {
-	// 		console.log("you won the game!");
-	// 	} else if (playerScore < computerScore) {
-	// 		console.log("you lost to the machine");
-	// 	} else {
-	// 		console.log("It was a tie!");
-	// 	}
-	// }
-
-// console.log(playGame(playerHand(), computerHand()));
-
-
