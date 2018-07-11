@@ -1,4 +1,3 @@
-
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
 	button.addEventListener('click', playGame)//(e) => {
@@ -6,10 +5,6 @@ buttons.forEach((button) => {
 		// if (e.target.id == 'rock')
 	// });
 });
-
-let tieMessage = `Tie Time!`;
-let winMessage = `You win!`;
-let loseMessage = `You lose!`
 
 // Computer's hand:
 function computerHand() {
@@ -24,6 +19,12 @@ function computerHand() {
 	}
 }
 
+let tieMessage = `Tie Time!`;
+let winMessage = `You win!`;
+let loseMessage = `You lose!`;
+let playerScore = 0;
+let computerScore = 0;
+
 function displayMessage(message) {
 	let results = document.querySelector('#resultsdiv');
 	let resultsContent = document.createElement('p');
@@ -31,22 +32,45 @@ function displayMessage(message) {
 	results.appendChild(resultsContent);
 }
 
+	let scoreboard = document.querySelector('#scoreboard');
+	let score = document.createElement('p');
+	scoreboard.appendChild(score);
+function displayScore(result) {
+	switch (result) {
+		case winMessage:
+			playerScore += 1;
+		case loseMessage:
+			computerScore += 1;
+	}
+	score.textContent = `You: ${playerScore} Machine: ${computerScore}`;
+
+	if (playerScore === 5) {
+		alert(`You won ${playerScore} to ${computerScore}`);
+	} else if (computerScore === 5) {
+		alert(`The Machine won ${computerScore} to ${playerScore}`);
+	}
+}
+
 // Simulates one game between user and computer
 function playGame(e) { 
+
 	let playerSelection = e.target.id;
 	let computerSelection = computerHand();
 
 	if (playerSelection == computerSelection) {
 		displayMessage(tieMessage);
+		displayScore(tieMessage);
 		return;
 	}
 
 	if (playerSelection == "rock") {
 		if (computerSelection == "scissor") {
 			displayMessage(winMessage);
+			displayScore(winMessage);
 			return;
 		} else {
 			displayMessage(loseMessage);
+			displayScore(loseMessage);
 			return;
 		} 
 	} 
