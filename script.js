@@ -13,13 +13,13 @@ function computerHand() {
 		case 1:
 			return "rock";
 		case 2:
-			return "paper";
+			return "powder";
 		default:
-			return "scissor";
+			return "snowboard";
 	}
 }
 
-let tieMessage = `Tie Time!`;
+let tieMessage = `It's a tie!`;
 let winMessage = `You win!`;
 let loseMessage = `You lose!`;
 let playerScore = 0;
@@ -40,6 +40,7 @@ function displayScore(result) {
 	switch (result) {
 		case winMessage:
 			playerScore += 1;
+			break;
 		case loseMessage:
 			computerScore += 1;
 	}
@@ -56,43 +57,45 @@ function displayScore(result) {
 function playGame(e) { 
 	let playerSelection = e.target.id;
 	let computerSelection = computerHand();
-
+	let tie = `Machine also chose ${computerSelection}. ${tieMessage}`;
+	let win = `Machine chose ${computerSelection}. ${winMessage}`;
+	let lose = `Machine chose ${computerSelection}. ${loseMessage}`;
 	if (playerSelection == computerSelection) {
-		displayMessage(tieMessage);
+		displayMessage(tie);
 		displayScore(tieMessage);
 		return;
 	}
 
 	if (playerSelection == "rock") {
-		if (computerSelection == "scissor") {
-			displayMessage(winMessage);
+		if (computerSelection == "snowboard") {
+			displayMessage(win);
 			displayScore(winMessage);
 			return;
 		} else {
-			displayMessage(loseMessage);
+			displayMessage(lose);
 			displayScore(loseMessage);
 			return;
 		} 
 	} 
 
-	if (playerSelection == "paper") {
+	if (playerSelection == "powder") {
 		if (computerSelection == "rock") {
-			displayMessage(winMessage);
+			displayMessage(win);
 			displayScore(winMessage);
 			return;
 		} else {
-			displayMessage(loseMessage);
+			displayMessage(lose);
 			displayScore(loseMessage);
 			return;
 		}
 	 }
 
-	 if (playerSelection == "scissor") {
-	 	if (computerSelection == "paper") {
-	 		displayMessage(winMessage);
+	 if (playerSelection == "snowboard") {
+	 	if (computerSelection == "powder") {
+	 		displayMessage(win);
 	 		displayScore(winMessage);
 	 	} else {
-	 		displayMessage(loseMessage);
+	 		displayMessage(lose);
 	 		displayScore(loseMessage);
 	 	}
 	 }
