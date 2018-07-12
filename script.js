@@ -1,10 +1,17 @@
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
-	button.addEventListener('click', playGame)//(e) => {
-		// console.log(e.target.id);
-		// if (e.target.id == 'rock')
-	// });
+	button.addEventListener('click', playGame);
 });
+
+
+
+function reset() {
+	let resetGame = document.querySelector('#reset');
+	resetGame.addEventListener('click', reset);
+	console.log('hi');
+	playerScore = 0;
+	computerScore = 0;
+}
 
 // Computer's hand:
 function computerHand() {
@@ -52,6 +59,8 @@ function displayScore(result) {
 		alert(`The Machine won ${computerScore} to ${playerScore}`);
 	}
 }
+
+
 
 // Simulates one game between user and computer
 function playGame(e) { 
