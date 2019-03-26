@@ -3,6 +3,7 @@ buttons.forEach((button) => {
 	button.addEventListener('click', playGame);
 });
 
+// to-fix: resetGame button currently doesn't do anything but calls reset
 function reset() {
 	let resetGame = document.querySelector('#reset');
 	resetGame.addEventListener('click', reset);
