@@ -3,8 +3,6 @@ buttons.forEach((button) => {
 	button.addEventListener('click', playGame);
 });
 
-
-
 function reset() {
 	let resetGame = document.querySelector('#reset');
 	resetGame.addEventListener('click', reset);
@@ -63,7 +61,7 @@ function displayScore(result) {
 
 
 // Simulates one game between user and computer
-function playGame(e) { 
+function playGame(e) {
 	let playerSelection = e.target.id;
 	let computerSelection = computerHand();
 	let tie = `Machine also chose ${computerSelection}. ${tieMessage}`;
@@ -84,8 +82,8 @@ function playGame(e) {
 			displayMessage(lose);
 			displayScore(loseMessage);
 			return;
-		} 
-	} 
+		}
+	}
 
 	if (playerSelection == "powder") {
 		if (computerSelection == "rock") {
@@ -116,5 +114,5 @@ function playRound(result) {
 		return 1;
 	} else if (result == `You lose!`) {
 		return -1;
-	} 
+	}
 }
